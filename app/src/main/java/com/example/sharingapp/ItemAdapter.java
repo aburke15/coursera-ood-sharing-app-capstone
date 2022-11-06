@@ -11,17 +11,18 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Item Adapter is responsible for what information is displayed in ListView entries.
  */
 public class ItemAdapter extends ArrayAdapter<Item> {
 
-    private LayoutInflater inflater;
-    private Fragment fragment;
-    private Context context;
+    private final LayoutInflater inflater;
+    private final Fragment fragment;
+    private final Context context;
 
-    public ItemAdapter(Context context, ArrayList<Item> items, Fragment fragment) {
+    public ItemAdapter(Context context, List<Item> items, Fragment fragment) {
         super(context, 0, items);
         this.context = context;
         this.inflater = LayoutInflater.from(context);
@@ -44,13 +45,13 @@ public class ItemAdapter extends ArrayAdapter<Item> {
 
         // Check if an existing view is being reused, otherwise inflate the view.
         if (convertView == null) {
-            convertView = inflater.from(context).inflate(R.layout.itemlist_item, parent, false);
+            convertView = LayoutInflater.from(context).inflate(R.layout.itemlist_item, parent, false);
         }
 
-        TextView title_tv = (TextView) convertView.findViewById(R.id.title_tv);
-        TextView status_tv = (TextView) convertView.findViewById(R.id.status_tv);
-        TextView description_tv = (TextView) convertView.findViewById(R.id.description_tv);
-        ImageView photo = (ImageView) convertView.findViewById(R.id.image_view);
+        TextView title_tv = convertView.findViewById(R.id.title_tv);
+        TextView status_tv = convertView.findViewById(R.id.status_tv);
+        TextView description_tv = convertView.findViewById(R.id.description_tv);
+        ImageView photo = convertView.findViewById(R.id.image_view);
 
         if (thumbnail != null) {
             photo.setImageBitmap(thumbnail);

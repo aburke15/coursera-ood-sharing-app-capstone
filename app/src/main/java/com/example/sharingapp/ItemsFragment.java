@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Superclass of AvailableItemsFragment, BorrowedItemsFragment and AllItemsFragment
@@ -22,7 +23,7 @@ public abstract class ItemsFragment extends Fragment {
     View rootView = null;
     private ListView list_view = null;
     private ArrayAdapter<Item> adapter = null;
-    private ArrayList<Item> selected_items;
+    private List<Item> selected_items;
     private LayoutInflater inflater;
     private ViewGroup container;
     private Context context;
@@ -73,6 +74,6 @@ public abstract class ItemsFragment extends Fragment {
      * filterItems is implemented independently by AvailableItemsFragment, BorrowedItemsFragment and AllItemsFragment
      * @return selected_items
      */
-    public abstract ArrayList<Item> filterItems();
+    public abstract List<Item> filterItems();
 
 }

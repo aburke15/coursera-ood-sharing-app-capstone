@@ -5,7 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Displays a list of all items
@@ -22,7 +22,7 @@ public class AllItemsFragment extends ItemsFragment {
         return rootView;
     }
 
-    public ArrayList<Item> filterItems() {
+    public List<Item> filterItems() {
         return item_list.getItems();
     }
 }
