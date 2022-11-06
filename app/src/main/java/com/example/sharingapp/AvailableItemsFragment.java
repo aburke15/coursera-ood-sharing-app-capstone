@@ -1,11 +1,14 @@
 package com.example.sharingapp;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.ArrayList;
+import androidx.annotation.RequiresApi;
+
+import java.util.List;
 
 /**
  * Displays a list of all "Available" items
@@ -22,7 +25,8 @@ public class AvailableItemsFragment extends ItemsFragment{
         return rootView;
     }
 
-    public ArrayList<Item> filterItems() {
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public List<Item> filterItems() {
         String status = "Available";
         return item_list.filterItemsByStatus(status);
     }

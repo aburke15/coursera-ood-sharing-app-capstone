@@ -23,14 +23,14 @@ import android.widget.TextView;
  */
 public class EditItemActivity extends AppCompatActivity {
 
-    private ItemList item_list = new ItemList();
+    private final ItemList item_list = new ItemList();
     private Item item;
     private Context context;
 
-    private ContactList contact_list = new ContactList();
+    private final ContactList contact_list = new ContactList();
 
     private Bitmap image;
-    private int REQUEST_CODE = 1;
+    private final int REQUEST_CODE = 1;
     private ImageView photo;
 
     private EditText title;
@@ -40,7 +40,6 @@ public class EditItemActivity extends AppCompatActivity {
     private EditText width;
     private EditText height;
     private Spinner borrower_spinner;
-    private EditText borrower;
     private TextView  borrower_tv;
     private Switch status;
     private EditText invisible;
@@ -51,16 +50,16 @@ public class EditItemActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_item);
 
-        title = (EditText) findViewById(R.id.title);
-        maker = (EditText) findViewById(R.id.maker);
-        description = (EditText) findViewById(R.id.description);
-        length = (EditText) findViewById(R.id.length);
-        width = (EditText) findViewById(R.id.width);
-        height = (EditText) findViewById(R.id.height);
+        title = findViewById(R.id.title);
+        maker = findViewById(R.id.maker);
+        description = findViewById(R.id.description);
+        length = findViewById(R.id.length);
+        width = findViewById(R.id.width);
+        height = findViewById(R.id.height);
         borrower_spinner = findViewById(R.id.borrower_spinner);
-        borrower_tv = (TextView) findViewById(R.id.borrower_tv);
-        photo = (ImageView) findViewById(R.id.image_view);
-        status = (Switch) findViewById(R.id.available_switch);
+        borrower_tv = findViewById(R.id.borrower_tv);
+        photo = findViewById(R.id.image_view);
+        status = findViewById(R.id.available_switch);
         invisible = findViewById(R.id.invisible);
 
         invisible.setVisibility(View.GONE);

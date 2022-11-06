@@ -1,6 +1,9 @@
 package com.example.sharingapp;
 
 import android.content.Context;
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -13,6 +16,8 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * ItemList class
@@ -62,7 +67,6 @@ public class ItemList {
     }
 
     public void loadItems(Context context) {
-
         try {
             FileInputStream fis = context.openFileInput(FILENAME);
             InputStreamReader isr = new InputStreamReader(fis);
@@ -92,14 +96,9 @@ public class ItemList {
         }
     }
 
-    public ArrayList<Item> filterItemsByStatus(String status){
-        ArrayList<Item> selected_items = new ArrayList<>();
-        for (Item i: items) {
-            if (i.getStatus().equals(status)) {
-                selected_items.add(i);
-            }
-        }
-        return selected_items;
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public List<Item> filterItemsByStatus(String status){
+        return items.stream().filter(item -> item.getStatus().equals(status)).collect(Collectors.toList());
     }
 
     public ArrayList<Contact> getActiveBorrowers() {
@@ -110,6 +109,7 @@ public class ItemList {
                 active_borrowers.add(borrower);
             }
         }
+
         return active_borrowers;
     }
 }
